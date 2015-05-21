@@ -10,10 +10,28 @@ namespace CmeData;
 
 class SubscriberData extends Data
 {
+  /**
+   * @var int $id
+   */
   public $id;
+  /**
+   * @var string $email
+   */
   public $email;
+  /**
+   * @var int $bounced
+   */
   public $bounced = 0;
+  /**
+   * @var int $unsubscribed
+   */
   public $unsubscribed = 0;
+  /**
+   * @var int $testSubscriber
+   */
   public $testSubscriber = 0;
+  /**
+   * @var int $dateCreated - unix timestamp
+   */
   public $dateCreated;
 }

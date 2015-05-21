@@ -10,11 +10,32 @@ namespace CmeData;
 
 class CampaignEventData extends Data
 {
+  /**
+   * @var int $eventId
+   */
   public $eventId;
+  /**
+   * @var int $campaignId
+   */
   public $campaignId;
+  /**
+   * @var int $listId
+   */
   public $listId;
+  /**
+   * @var int $subscriberId
+   */
   public $subscriberId;
-  public $eventType; //enum
+  /**
+   * @var string $eventType
+   */
+  public $eventType;
+  /**
+   * @var string $reference
+   */
   public $reference;
+  /**
+   * @var int $time - unix timestamp
+   */
   public $time;
 }

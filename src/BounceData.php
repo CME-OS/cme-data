@@ -10,7 +10,16 @@ namespace CmeData;
 
 class BounceData extends Data
 {
+  /**
+   * @var string $email
+   */
   public $email;
+  /**
+   * @var int $campaignId
+   */
   public $campaignId;
+  /**
+   * @var int $time - unix timestamp
+   */
   public $time;
 }

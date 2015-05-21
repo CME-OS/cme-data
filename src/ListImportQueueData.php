@@ -10,13 +10,25 @@ namespace CmeData;
 
 class ListImportQueueData extends Data
 {
+  /**
+   * @var int $id
+   */
   public $id;
+  /**
+   * @var int $listId
+   */
   public $listId;
   /**
    * @var string $type
    * Allowed Values: "api", "csv", "file"
    */
   public $type;
+  /**
+   * @var string $source
+   */
   public $source;
+  /**
+   * @var string|null $lockedBy
+   */
   public $lockedBy = null;
 }

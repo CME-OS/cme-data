@@ -10,10 +10,28 @@ namespace CmeData;
 
 class TemplateData extends Data
 {
+  /**
+   * @var int $id
+   */
   public $id;
+  /**
+   * @var string $name
+   */
   public $name;
+  /**
+   * @var string $content
+   */
   public $content;
+  /**
+   * @var string $screenshot
+   */
   public $screenshot;
+  /**
+   * @var int $created - unix timestamp
+   */
   public $created;
+  /**
+   * @var int $deletedAt - unix timestamp
+   */
   public $deletedAt;
 }
