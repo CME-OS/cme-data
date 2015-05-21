@@ -39,4 +39,19 @@ class InitData
    * @var string $dbPrefix
    */
   public $dbPrefix = '';
+
+  /**
+   * @var string $cacheDriver
+   */
+  public $cacheDriver;
+
+  /**
+   * @var string $cachePath
+   */
+  public $cachePath;
+
+  /**
+   * @var string $cachePrefix
+   */
+  public $cachePrefix;
 }
