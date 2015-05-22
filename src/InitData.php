@@ -54,4 +54,10 @@ class InitData
    * @var string $cachePrefix
    */
   public $cachePrefix;
+
+  /**
+   * Domain where instance of cme is hosted
+   * @var string $cmeHost
+   */
+  public $cmeHost;
 }
