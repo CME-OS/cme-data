@@ -19,14 +19,6 @@ class SubscriberData extends Data
    */
   public $email;
   /**
-   * @var int $bounced
-   */
-  public $bounced = 0;
-  /**
-   * @var int $unsubscribed
-   */
-  public $unsubscribed = 0;
-  /**
    * @var int $testSubscriber
    */
   public $testSubscriber = 0;
