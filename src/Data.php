@@ -8,8 +8,23 @@
 
 namespace CmeData;
 
+use CmeData\Validation\DataConstraints;
+use Symfony\Component\Validator\ConstraintViolationList;
+use Symfony\Component\Validator\Validation;
+
+use Symfony\Component\Validator\Constraints as Constraint;
+
 abstract class Data
 {
+  /**
+   * @var ValidatorInterface $_validator
+   */
+  protected $_validator;
+  /**
+   * @var ConstraintViolationList $violations ;
+   */
+  protected $_violations;
+
   /**
    * @param array $data
    * @param bool  $checkProperty
@@ -38,20 +53,62 @@ abstract class Data
   }
 
   /**
+   * $checkPropertyIsSet is a flag to specify if you want to only
+   * return properties that have a value that is not falsely.
+   * Set to false to return falsely properties
+   *
+   * @param bool $checkPropertyIsSet
+   *
    * @return array
    */
-  public function toArray()
+  public function toArray($checkPropertyIsSet = true)
   {
-    $data   = (array)$this;
+    $data   = get_object_vars($this);
     $return = [];
     foreach($data as $k => $v)
     {
-      if(isset($v))
+      $add = true;
+      if($checkPropertyIsSet)
+      {
+        $add = isset($v);
+      }
+
+      if($add)
       {
         $return[snake_case($k)] = $v;
       }
     }
 
+    unset($return['_validator']);
+    unset($return['_violations']);
     return $return;
+  }
+
+  public function validate()
+  {
+    $this->_validator = Validation::createValidator();
+    return $this->_validate();
+  }
+
+  /**
+   * @return bool
+   */
+  protected function _validate()
+  {
+    $dk          = array_keys(self::toArray());
+    $constraints = new Constraint\Collection(
+      DataConstraints::get($dk)
+    );
+
+    $this->_violations = $this->_validator->validate(
+      self::toArray(),
+      $constraints
+    );
+    return ($this->_violations->count()) ? false : true;
+  }
+
+  public function getViolations()
+  {
+    return $this->_violations;
   }
 }

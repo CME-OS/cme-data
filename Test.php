@@ -22,3 +22,14 @@ $b['brand_website_url'] = "http://www.nike.com";
 
 $data = BrandData::hydrate($b);
 var_dump($data);
+
+$b = new \CmeData\BrandData();
+$b->brandSenderEmail = 'how@ju.com';
+$b->id = '9';
+
+var_dump($b->validate());
+foreach($b->getViolations() as $b)
+{
+  var_dump($b->getPropertyPath().$b->getMessage());
+}
+
