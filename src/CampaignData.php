@@ -79,9 +79,9 @@ class CampaignData extends Data
    */
   public $frequency;
   /**
-   * JSON encoded string represent filter that must be applied to list before
+   * An array of filters that must be applied to list before
    * sending this campaign
-   * @var string $filters ;
+   * @var array $filters ;
    */
   public $filters;
   /**

@@ -70,7 +70,7 @@ class DataConstraints
       "status"              => [new Constraint\Type(['type' => 'string'])],
       "type"                => [new Constraint\Type(['type' => 'string'])],
       "frequency"           => [new Constraint\Type(['type' => 'numeric'])],
-      "filters"             => [new Constraint\Type(['type' => 'string'])],
+      "filters"             => [new Constraint\Type(['type' => 'array'])],
       "tested"              => [new Constraint\Type(['type' => 'numeric'])],
       "previewed"           => [new Constraint\Type(['type' => 'numeric'])],
       "smtpProviderId"      => [
