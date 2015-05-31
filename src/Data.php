@@ -13,13 +13,14 @@ use Symfony\Component\Validator\ConstraintViolationList;
 use Symfony\Component\Validator\Validation;
 
 use Symfony\Component\Validator\Constraints as Constraint;
+use Symfony\Component\Validator\ValidatorInterface;
 
 abstract class Data
 {
   /**
    * @var ValidatorInterface $_validator
    */
-  protected $_validator;
+  protected static $_validator;
   /**
    * @var ConstraintViolationList $violations ;
    */
@@ -86,7 +87,7 @@ abstract class Data
 
   public function validate()
   {
-    $this->_validator = Validation::createValidator();
+    self::$_validator = Validation::createValidator();
     return $this->_validate();
   }
 
@@ -100,15 +101,45 @@ abstract class Data
       DataConstraints::get($dk)
     );
 
-    $this->_violations = $this->_validator->validate(
+    $this->_violations = self::$_validator->validate(
       self::toArray(),
       $constraints
     );
     return ($this->_violations->count()) ? false : true;
   }
 
+  /**
+   * @return ConstraintViolationList
+   */
   public function getViolations()
   {
     return $this->_violations;
+  }
+
+  /**
+   * @return array
+   */
+  public function getValidationErrors()
+  {
+    $violations = $this->getViolations();
+    $errors     = [];
+    foreach($violations as $v)
+    {
+      $errors[str_replace(
+        [']', '['],
+        '',
+        $v->getPropertyPath()
+      )] = $v->getMessage();
+    }
+
+    return $errors;
+  }
+
+  /**
+   * @return ValidatorInterface
+   */
+  public static function getValidator()
+  {
+    return self::$_validator;
   }
 }
