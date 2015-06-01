@@ -47,10 +47,7 @@ class DataConstraints
       "brandUnsubscribeUrl" => new Constraint\Url(),
       "brandLogo"           => new Constraint\Url(),
       "brandCreated"        => new Constraint\Type(['type' => 'numeric']),
-      "brandDeletedAt"      => [
-        new Constraint\Type(['type' => 'numeric']),
-        new Constraint\Null()
-      ],
+      "brandDeletedAt"      => [new Constraint\Type(['type' => 'numeric'])],
       "name"                => [
         new Constraint\Type(['type' => 'string']),
         new Constraint\NotBlank()
@@ -90,10 +87,7 @@ class DataConstraints
         new Constraint\Type(['type' => 'numeric']),
         new Constraint\GreaterThan(['value' => 0])
       ],
-      "deletedAt"           => [
-        new Constraint\Type(['type' => 'numeric']),
-        new Constraint\Null()
-      ],
+      "deletedAt"           => [new Constraint\Type(['type' => 'numeric'])],
       "eventId"             => [
         new Constraint\Type(['type' => 'numeric']),
         new Constraint\GreaterThan(['value' => 0])
