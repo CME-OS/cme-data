@@ -30,14 +30,20 @@ class DataConstraints
         new Constraint\GreaterThan(['value' => 0])
       ],
       'time'                => new Constraint\Type(['type' => 'numeric']),
-      "brandName"           => new Constraint\Type(['type' => 'string']),
+      "brandName"           => [
+        new Constraint\Type(['type' => 'string']),
+        new Constraint\NotBlank()
+      ],
       "brandSenderEmail"    => [
         new Constraint\Email(),
         new Constraint\NotBlank()
       ],
-      "brandSenderName"     => new Constraint\Type(['type' => 'string']),
+      "brandSenderName"     => [
+        new Constraint\Type(['type' => 'string']),
+        new Constraint\NotBlank()
+      ],
       "brandWebsiteUrl"     => new Constraint\Type(['type' => 'string']),
-      "brandDomainName"     => new Constraint\Type(['type' => 'string']),
+      "brandDomainName"     => [new Constraint\Type(['type' => 'string'])],
       "brandUnsubscribeUrl" => new Constraint\Url(),
       "brandLogo"           => new Constraint\Url(),
       "brandCreated"        => new Constraint\Type(['type' => 'numeric']),
@@ -146,14 +152,8 @@ class DataConstraints
         new Constraint\Type(['type' => 'string']),
         new Constraint\NotBlank()
       ],
-      "description"         => [
-        new Constraint\Type(['type' => 'string']),
-        new Constraint\Null()
-      ],
-      "endpoint"            => [
-        new Constraint\Url(),
-        new Constraint\Null()
-      ],
+      "description"         => [new Constraint\Type(['type' => 'string'])],
+      "endpoint"            => [new Constraint\Url()],
       "refreshInterval"     => [new Constraint\Type(['type' => 'numeric'])],
       "lastRefreshTime"     => [new Constraint\Type(['type' => 'numeric'])],
       "_size"               => [new Constraint\Type(['type' => 'numeric'])],

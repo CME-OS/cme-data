@@ -117,7 +117,7 @@ abstract class Data
   }
 
   /**
-   * @return array
+   * @return ValidationErrorData[]
    */
   public function getValidationErrors()
   {
@@ -125,11 +125,11 @@ abstract class Data
     $errors     = [];
     foreach($violations as $v)
     {
-      $errors[str_replace(
-        [']', '['],
-        '',
-        $v->getPropertyPath()
-      )] = $v->getMessage();
+      $ve          = new ValidationErrorData();
+      $ve->field   = str_replace([']', '['], '', $v->getPropertyPath());
+      $ve->message = $v->getMessage();
+      $ve->value   = $v->getInvalidValue();
+      $errors[]    = $ve;
     }
 
     return $errors;
