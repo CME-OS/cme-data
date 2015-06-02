@@ -83,7 +83,7 @@ class CampaignData extends Data
    * sending this campaign
    * @var array $filters ;
    */
-  public $filters;
+  public $filters = [];
   /**
    * Flag to track if campaign has been tested or not
    * @var int $tested
