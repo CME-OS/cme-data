@@ -69,8 +69,15 @@ class DataConstraints
         new Constraint\Null()
       ],
       "sendTime"            => [
-        new Constraint\Type(['type' => 'numeric', 'message' => 'This value should be a valid date time']),
-        new Constraint\GreaterThan(['value' => 0, 'message' => 'This value should be a valid date time'])
+        new Constraint\Type(
+          [
+            'type'    => 'numeric',
+            'message' => 'This value should be a valid date time'
+          ]
+        ),
+        new Constraint\GreaterThan(
+          ['value' => 0, 'message' => 'This value should be a valid date time']
+        )
       ],
       "sendPriority"        => [new Constraint\Type(['type' => 'numeric'])],
       "status"              => [new Constraint\Type(['type' => 'string'])],
@@ -104,6 +111,15 @@ class DataConstraints
           ['min' => 0, 'max' => 1]
         )
       ],
+      "host"                => [
+        new Constraint\Type(['type' => 'string']),
+        new Constraint\NotBlank()
+      ],
+      "username"            => [
+        new Constraint\Type(['type' => 'string']),
+        new Constraint\NotBlank()
+      ],
+      "port"                => [new Constraint\Type(['type' => 'numeric'])],
       "dbDriver"            => [new Constraint\Type(['type' => 'string'])],
       "dbHost",
       "dbUsername"          => [
