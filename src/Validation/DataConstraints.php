@@ -57,7 +57,7 @@ class DataConstraints
         new Constraint\NotBlank()
       ],
       "from"                => [
-        new Constraint\Type(['type' => 'string']),
+        new Constraint\Email(),
         new Constraint\NotBlank()
       ],
       "htmlContent"         => [
@@ -68,15 +68,15 @@ class DataConstraints
         new Constraint\Type(['type' => 'string']),
         new Constraint\Null()
       ],
-      "sendTime"            => [new Constraint\Type(['type' => 'numeric'])],
+      "sendTime"            => [
+        new Constraint\Type(['type' => 'numeric', 'message' => 'This value should be a valid date time']),
+        new Constraint\GreaterThan(['value' => 0, 'message' => 'This value should be a valid date time'])
+      ],
       "sendPriority"        => [new Constraint\Type(['type' => 'numeric'])],
       "status"              => [new Constraint\Type(['type' => 'string'])],
       "type"                => [new Constraint\Type(['type' => 'string'])],
       "frequency"           => [new Constraint\Type(['type' => 'numeric'])],
-      "filters"             => [
-        new Constraint\Type(['type' => 'array']),
-        new Constraint\Null()
-      ],
+      "filters"             => [new Constraint\Type(['type' => 'array'])],
       "tested"              => [new Constraint\Type(['type' => 'numeric'])],
       "previewed"           => [new Constraint\Type(['type' => 'numeric'])],
       "smtpProviderId"      => [
