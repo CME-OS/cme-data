@@ -64,10 +64,7 @@ class DataConstraints
         new Constraint\Type(['type' => 'string']),
         new Constraint\NotBlank()
       ],
-      "textContent"         => [
-        new Constraint\Type(['type' => 'string']),
-        new Constraint\Null()
-      ],
+      "textContent"         => [new Constraint\Type(['type' => 'string'])],
       "sendTime"            => [
         new Constraint\Type(
           [
@@ -134,30 +131,12 @@ class DataConstraints
         new Constraint\Type(['type' => 'string']),
         new Constraint\NotBlank()
       ],
-      "dbCharset"           => [
-        new Constraint\Type(['type' => 'string']),
-        new Constraint\Null()
-      ],
-      "dbCollation"         => [
-        new Constraint\Type(['type' => 'string']),
-        new Constraint\Null()
-      ],
-      "dbPrefix"            => [
-        new Constraint\Type(['type' => 'string']),
-        new Constraint\NotBlank()
-      ],
-      "cacheDriver"         => [
-        new Constraint\Type(['type' => 'string']),
-        new Constraint\Null()
-      ],
-      "cachePath"           => [
-        new Constraint\Type(['type' => 'string']),
-        new Constraint\Null()
-      ],
-      "cachePrefix"         => [
-        new Constraint\Type(['type' => 'string']),
-        new Constraint\Null()
-      ],
+      "dbCharset"           => [new Constraint\Type(['type' => 'string'])],
+      "dbCollation"         => [new Constraint\Type(['type' => 'string'])],
+      "dbPrefix"            => [new Constraint\Type(['type' => 'string'])],
+      "cacheDriver"         => [new Constraint\Type(['type' => 'string'])],
+      "cachePath"           => [new Constraint\Type(['type' => 'string'])],
+      "cachePrefix"         => [new Constraint\Type(['type' => 'string'])],
       "cmeHost"             => [
         new Constraint\Type(['type' => 'string']),
         new Constraint\NotBlank()
