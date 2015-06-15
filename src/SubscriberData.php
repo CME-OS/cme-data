@@ -8,6 +8,9 @@
 
 namespace CmeData;
 
+use CmeData\Validation\DataConstraints;
+use Symfony\Component\Validator\Constraints as Constraint;
+
 class SubscriberData extends Data
 {
   /**
@@ -23,7 +26,30 @@ class SubscriberData extends Data
    */
   public $testSubscriber = 0;
   /**
-   * @var int $dateCreated - unix timestamp
+   * @var datetime $dateCreated
    */
   public $dateCreated;
+
+  protected function _validate()
+  {
+    $validatableFields = ['email', 'test_subscriber', 'date_created'];
+    $constraints = new Constraint\Collection(
+      DataConstraints::get($validatableFields)
+    );
+
+    $allData = self::toArray();
+    foreach($allData as $k => $v)
+    {
+      if(!in_array($k, $validatableFields))
+      {
+        unset($allData[$k]);
+      }
+    }
+
+    $this->_violations = self::$_validator->validate(
+      $allData,
+      $constraints
+    );
+    return ($this->_violations->count()) ? false : true;
+  }
 }
