@@ -2,6 +2,7 @@
 
 namespace CmeData\Validation;
 
+use CmeData\Helpers\Str;
 use Symfony\Component\Validator\Constraints as Constraint;
 
 class DataConstraints
@@ -201,10 +202,10 @@ class DataConstraints
     $return = [];
     foreach($keys as $key)
     {
-      $key = camel_case($key);
+      $key = Str::camelCase($key);
       if(isset($constraints[$key]))
       {
-        $return[snake_case($key)] = $constraints[$key];
+        $return[Str::snakeCase($key)] = $constraints[$key];
       }
     }
 

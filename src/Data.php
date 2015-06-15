@@ -8,6 +8,7 @@
 
 namespace CmeData;
 
+use CmeData\Helpers\Str;
 use CmeData\Validation\DataConstraints;
 use Symfony\Component\Validator\ConstraintViolationList;
 use Symfony\Component\Validator\Validation;
@@ -42,12 +43,12 @@ abstract class Data
       $hydrate = true;
       if($checkProperty)
       {
-        $hydrate = property_exists(get_class($dataObj), camel_case($key));
+        $hydrate = property_exists(get_class($dataObj), Str::camelCase($key));
       }
 
       if($hydrate)
       {
-        $dataObj->{camel_case($key)} = $value;
+        $dataObj->{Str::camelCase($key)} = $value;
       }
     }
     return $dataObj;
@@ -76,7 +77,7 @@ abstract class Data
 
       if($add)
       {
-        $return[snake_case($k)] = $v;
+        $return[Str::snakeCase($k)] = $v;
       }
     }
 
