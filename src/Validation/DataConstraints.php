@@ -176,7 +176,7 @@ class DataConstraints
         new Constraint\GreaterThan(['value' => 0])
       ],
       "testSubscriber"      => [new Constraint\Type(['type' => 'numeric'])],
-      "dateCreated"         => [new Constraint\Type(['type' => 'numeric'])],
+      "dateCreated"         => [new Constraint\DateTime()],
       "content"             => [
         new Constraint\Type(['type' => 'string']),
         new Constraint\NotBlank()
