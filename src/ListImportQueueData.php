@@ -31,4 +31,9 @@ class ListImportQueueData extends Data
    * @var string|null $lockedBy
    */
   public $lockedBy = null;
+
+  /**
+   * @var int $time - unix timestamp
+   */
+  public $time;
 }
