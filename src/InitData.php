@@ -60,4 +60,10 @@ class InitData
    * @var string $cmeHost
    */
   public $cmeHost;
+
+  /**
+   * Key used for encryption
+   * @var string $key
+   */
+  public $key;
 }
