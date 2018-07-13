@@ -90,7 +90,6 @@ abstract class Data
   {
 
     $builder  = Validation::createValidatorBuilder();
-    $builder->setApiVersion(Validation::API_VERSION_2_4);
     self::$_validator = $builder->getValidator();
     return $this->_validate();
   }
