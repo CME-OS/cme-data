@@ -34,7 +34,7 @@ abstract class Data
    * @return static
    */
   public static function hydrate(
-    array $data, $checkProperty = true
+    $data, $checkProperty = true
   )
   {
     $dataObj = new static;
@@ -88,7 +88,10 @@ abstract class Data
 
   public function validate()
   {
-    self::$_validator = Validation::createValidator();
+
+    $builder  = Validation::createValidatorBuilder();
+    $builder->setApiVersion(Validation::API_VERSION_2_4);
+    self::$_validator = $builder->getValidator();
     return $this->_validate();
   }
 
